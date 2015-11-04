@@ -42,7 +42,7 @@ def find_version(*file_paths):
 def main():
     python_version = sys.version_info[:2]
     install_requires = [
-        'virtualenv>=12.0,<13.0',
+        'virtualenv',
     ]
     if python_version < (2, 7) or (3, 0) <= python_version <= (3, 1):
         install_requires += ['argparse']
