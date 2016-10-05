@@ -581,6 +581,7 @@ class Terrarium(object):
     def create_bootstrap(self, dest):
         extra_text = (
             TERRARIUM_BOOTSTRAP_EXTRA_TEXT.format(
+                python_bin='"{}"'.format(sys.executable),
                 requirements=self.requirements,
                 virtualenv_log_level=self.args.virtualenv_log_level,
                 pip_log_level=self.args.pip_log_level,
@@ -593,8 +594,9 @@ class Terrarium(object):
 
 TERRARIUM_BOOTSTRAP_EXTRA_TEXT = r'''
 def adjust_options(options, args):
-    options.use_distribute = True
+    options.use_distribute = False
     options.system_site_packages = False
+    options.python = {python_bin}
 
 REQUIREMENTS = {requirements}
 
